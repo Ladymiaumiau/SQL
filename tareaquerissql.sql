@@ -65,7 +65,7 @@ select p.amount as costo_antepenultimo_alquiler
 from rental r
 join payment p on r.rental_id = p.rental_id
 order by r.rental_date desc
-limit 5 offset 2 ;
+limit 1 offset 2 ;
 
 12--Encuentra el título de las películas en la tabla “filmˮ que no sean ni 'NC-17'
  --ni ‘Gʼ en cuanto a su clasificación.
@@ -100,7 +100,7 @@ from payment p ;
 select *
 from customer c 
 order by customer_id desc 
-limit 11;
+limit 10;
 
 17-- Encuentra el nombre y apellido de los actores que aparecen en la 
 --película con título ‘Egg Igbyʼ
@@ -164,7 +164,7 @@ order by cantidad_alquileres desc;
 
 24-- Encuentra las películas con una duración superior al promedio.
 
-select film.*, avg_duracion.promedio
+select title, avg_duracion.promedio
 from film
 join (
 	 select avg(length ) as promedio
@@ -242,7 +242,7 @@ select
     a.last_name as actor_apellido
 from film f
 left join film_actor fa on f.film_id = fa.film_id
-left joinactor a on fa.actor_id = a.actor_id
+left join actor a on fa.actor_id = a.actor_id
 order by f.title, a.last_name, a.first_name;
  
 32--Obtener todos los actores y mostrar las películas en las que han 
@@ -299,7 +299,7 @@ from actor a ;
 
 37--Encuentra el ID del actor más bajo y más alto en la tabla actor.
 
-select min (a.actor_id ) as id_bajo, max(a.actor_id )as id_bajo
+select min (a.actor_id ) as id_bajo, max(a.actor_id )as id_alto
 from actor a ;
 
 38--Cuenta cuántos actores hay en la tabla “actorˮ.
@@ -312,7 +312,7 @@ from actor a ;
 
 select *
 from actor a 
-order by "last_name" desc ;
+order by "last_name" asc ;
 
 40-- Selecciona las primeras 5 películas de la tabla “filmˮ.
 
@@ -353,7 +353,7 @@ select
     r.rental_date,
     r.return_date
 from  customer c 
-left join rental r  on c.customer_id  = c.customer_id;
+left join rental r  on c.customer_id  = r.customer_id;
 
 
 44-- Realiza un CROSS JOIN entre las tablas film y category. ¿Aporta valor 
@@ -534,8 +534,8 @@ where fc.category_id  = (
 	select category_id
 	from category
 	where name = 'Animation'
-order by f.title asc
-);
+    )
+order by f.title asc;
 
   
 
