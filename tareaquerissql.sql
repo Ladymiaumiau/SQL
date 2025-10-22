@@ -14,10 +14,14 @@ where actor_id  between 30 and 40;
 
 4--Obtén las películas cuyo idioma coincide con el idioma original.
 
-select  f. film_id, f. title , l. name as idioma
+select  f. film_id, 
+        f. title , 
+        l. name as idioma
 from film f 
-join language l on  f.language_id = l.language_id
-where f.original_language_id is null;
+join language l 
+on  f.language_id = l.language_id
+where f.language_id = f.original_language_id;
+
   
 
 5--Ordena las películas por duración de forma ascendente.
@@ -31,7 +35,7 @@ order by length asc;
 
 select first_name, last_name
 from actor
-where last_name ilike '%Allen%';
+where last_name = 'Allen';
 
 
 7--Encuentra la cantidad total de películas en cada clasificación de la tabla 
@@ -50,7 +54,7 @@ where f.rating = 'PG-13' or f.length >180;
 
 9--Encuentra la variabilidad de lo que costaría reemplazar las películas.
 
-select stddev(f.replacement_cost ) as REEMPLAZAR_PELICULAS
+select stddev(f.replacement_cost ) as variabilidad_costo_reemplazo
 from film f ;
  
 10--Encuentra la mayor y menor duración de una película de nuestra BBDD.
@@ -113,7 +117,7 @@ where f.title  = 'Egg Igby';
 
 18--Selecciona todos los nombres de las películas únicos.
 
-select f.title 
+select distinct f.title 
 from film f ;
 
  19--Encuentra el título de las películas que son comedias y tienen una 
@@ -275,7 +279,7 @@ order by   r.rental_date desc;
 
 34--Encuentra los 5 clientes que más dinero se hayan gastado con nosotros.
 
-select c.customer_id ,c.first_name, ' ', c.last_name,
+select c.customer_id ,c.first_name || ' ' || c.last_name,
 	   sum(p.amount) as total_gastado
 from customer c 
 join payment p on c.customer_id = p.customer_id
