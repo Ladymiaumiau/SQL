@@ -1,0 +1,43 @@
+
+# tenemos este diccionario cuyas claves son los números y el nombre del mes es el valor
+dictio_meses = {
+    1: 'enero',
+    2: 'febrero',
+    3: 'marzo',
+    4: 'abril',
+    5: 'mayo',
+    6: 'junio',
+    7: 'julio',
+    8: 'agosto',
+    9: 'septiembre',
+    10: 'octubre',
+    11: 'noviembre',
+    12: 'diciembre'
+}
+# Iteramos por los ítems (clave, valor) del diccionario
+for clave, valor in dictio_meses.items():
+    # mostramos por terminal tanto la clave como el valor
+    print(f'Número del mes: {clave}, Nombre del mes: {valor}')
+
+
+    
+# tenemos este diccionario cuyas claves son los números y el nombre del mes es el valor
+dictio_meses = {
+    1: 'enero',
+    2: 'febrero',
+    3: 'marzo',
+    4: 'abril',
+    5: 'mayo',
+    6: 'junio',
+    7: 'julio',
+    8: 'agosto',
+    9: 'septiembre',
+    10: 'octubre',
+    11: 'noviembre',
+    12: 'diciembre'
+}
+# Iteramos por los valores del diccionario
+for valor in dictio_meses.values():
+    # mostramos por terminal los valores del diccionario
+    print(f'Nombre del mes: {valor}')
+    
